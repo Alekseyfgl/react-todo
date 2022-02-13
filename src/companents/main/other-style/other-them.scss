@@ -1,0 +1,74 @@
+.tasks-list__status {
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
+  background-color: transparent;
+  border: 1px solid #ececec;
+  box-sizing: border-box;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: ease 0.1s;
+  svg {
+    display: none;
+  }
+
+}
+
+.tasks-list__status.active {
+
+  svg {
+    display: block;
+  }
+
+}
+
+
+.tasks-list_them {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 0 3px rgb(0 0 0 / 9%);
+  transition: 0.3s;
+
+  p {
+    overflow: hidden;
+    max-width: 500px;
+    //padding: 10px;
+    //margin-right: 10px
+    // ;
+
+
+  }
+
+  &:hover {
+    background-color: #550dc9;
+
+    input {
+      color: #fff;
+
+      &:focus {
+        border-color: #fff;
+      }
+    }
+
+    .check-mark-container_them {
+      background-color: #fff;
+    }
+
+    //
+    .check-mark-container__svg {
+      fill: #fff;
+    }
+  }
+
+
+}
+
+.tasks-count_them {
+  margin-bottom: 10px;
+  font-weight: 600;
+}

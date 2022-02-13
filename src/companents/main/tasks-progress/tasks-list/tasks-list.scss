@@ -1,0 +1,78 @@
+.tasks-list {
+  &__wr-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__title {
+    padding: 6px ;
+  background-color: transparent;
+    &:focus {
+      border: 1px solid #000;
+      border-radius: 4px;
+    }
+  }
+}
+
+.btns-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease 0.1s;
+  //svg {
+  //  height: 100%;
+  //}
+}
+
+.btn-edit {
+  height: 20px;
+  fill: none;
+  margin-right: 12px;
+  background-color: transparent;
+
+  svg {
+    height: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+
+
+
+
+.btn-important {
+  height: 16px;
+  margin-right: 12px;
+  background-color: transparent;
+
+  svg {
+    fill: #070707;
+    height: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.btn-important.active {
+  svg {
+    fill: #ffd300;
+  }
+
+}
+
+
+
+//STATUS TASK
+.active {
+  text-decoration: line-through;
+  color: #a3a3a3;
+  &:hover {
+    color: #fff;
+  }
+}
+

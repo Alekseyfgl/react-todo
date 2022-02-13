@@ -1,0 +1,14 @@
+.btn-delete {
+  display: block;
+  background-color: transparent;
+  height: 20px;
+  width: 20px;
+
+  svg {
+    fill: #ff6363;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
