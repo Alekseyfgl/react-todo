@@ -16,7 +16,7 @@ class Content extends React.Component {
 
     onListClosedTasks= (newClosedTasks) => {
         // console.log('tasksList', tasksList);
-        console.log('blaaaaa',newClosedTasks)
+        // console.log('blaaaaa',newClosedTasks)
 
         this.setState({
             listClosedTasks: newClosedTasks,

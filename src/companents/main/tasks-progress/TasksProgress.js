@@ -129,7 +129,7 @@ class TasksProgress extends React.Component {
 
 
     onRenameTask = (id, inputVal) => {
-        console.log(inputVal)
+        // console.log(inputVal)
         // console.log(id)
         this.setState(({tasks}) => {
             //возвращаем новый объект
