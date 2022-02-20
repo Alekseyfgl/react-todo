@@ -8,19 +8,16 @@ class Task extends React.Component {
         this.myRef = React.createRef();
 
         this.state = {
-            isImportant: this.props.isImportant,
             name: this.props.name,
-
-            toggleInputBtn: this.props.toggleInput
-            // isActive: this.props.isActive,
+            toggleInputBtn: false,
         }
     }
 
     componentDidUpdate(prevState) {
-        if (this.state.toggleInputBtn !== prevState.toggleInputBtn) {
-
+        const {toggleInputBtn} = this.state;
+        if (toggleInputBtn !== prevState.toggleInputBtn) {
             //если у нас стоит интуп, то только тогда ставим фокус, инпут стоит когда toggleInputBtn === true
-            if (this.state.toggleInputBtn === true) {
+            if (toggleInputBtn === true) {
                 this.myRef.current.focus();
             }
         }
@@ -49,15 +46,7 @@ class Task extends React.Component {
         delTask(id);
     }
 
-    onImportantTask = () => {
-        // деструкторизация пропса здесь
-        this.setState(({isImportant}) => {
-            return {
-                isImportant: !isImportant,
-            }
-        });
 
-    }
 
 
     onRenameInputChild = (e) => {
@@ -71,16 +60,7 @@ class Task extends React.Component {
         this.props.onRenameTask(id, inputVal, e);
     }
 
-    // onCheckNameTask = (e) => {
-    //     const {id} = this.props;
-    //     const inputVal = e.target.value ? e.target.value : 'no title';
-    //
-    //     this.setState({
-    //         name: inputVal.trim() ? inputVal : 'no title',
-    //     })
-    //
-    //     this.props.checkNameInput(id, inputVal);
-    // }
+
 
 
     onToggleInput = () => {
@@ -98,8 +78,8 @@ class Task extends React.Component {
 
 
     render() {
-        const {isActive} = this.props
-        const {isImportant, toggleInputBtn} = this.state;
+        const {isActive,isImportant} = this.props
+        const { toggleInputBtn} = this.state;
 
         // console.log(toggleInputBtn);
 
@@ -108,7 +88,8 @@ class Task extends React.Component {
             classForImportant += ' active';
         }
 
-        const finalTask = toggleInputBtn ? <input
+        const finalTask = toggleInputBtn ?
+            <input
                 onBlur={this.onToggleInputForBlur}
                 onChange={this.onRenameInputChild}
                 value={this.state.name}
@@ -119,7 +100,7 @@ class Task extends React.Component {
 
                 className="tasks-list__title"
             /> :
-            <p>{this.state.name}</p>
+            <p>{this.state.name}</p>;
 
 
         return (
@@ -138,21 +119,13 @@ class Task extends React.Component {
                         </path>
                     </svg>
                 </span>
-                    {/*<input*/}
-                    {/*    onBlur={this.onCheckNameTask}*/}
-                    {/*    onChange={this.onRenameInputChild}*/}
-                    {/*    value={this.state.name}*/}
-                    {/*    // defaultValue={name}*/}
-                    {/*    disabled={true}*/}
-                    {/*    className="tasks-list__title"/>*/}
-
                     {finalTask}
                 </div>
 
 
                 <div className="btns-edit">
 
-                    <button onClick={this.onImportantTask}
+                    <button onClick={this.props.toggleImportant}
                             className={classForImportant}>
                         <svg className={'btn-important__svg'} viewBox="0 0 576 512">
                             <path className={'btn-important__path'}

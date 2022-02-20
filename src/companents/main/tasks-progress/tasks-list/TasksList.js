@@ -6,7 +6,16 @@ import './tasks-list.scss';
 import '../../other-style/btn-delete.scss';
 
 
-const TasksList = ({tasks, delTask, closeTask,onRenameTask,renameTaskApp,checkNameInput,toggleInput }) => {
+const TasksList = ({
+                       tasks,
+                       delTask,
+                       closeTask,
+                       onRenameTask,
+                       // renameTaskApp,
+                       // checkNameInput,
+                       // toggleInput,
+                       toggleImportant,
+                   }) => {
     // console.log(tasks);
 
     return (
@@ -18,10 +27,10 @@ const TasksList = ({tasks, delTask, closeTask,onRenameTask,renameTaskApp,checkNa
                     delTask={delTask}
                     closeTask={() => closeTask(item.id)}
                     onRenameTask={onRenameTask}
-                    renameTaskApp={(e)=>renameTaskApp(e,item.id)}
-                    checkNameInput={checkNameInput}
-
-                    toggleInput={toggleInput}
+                    // renameTaskApp={(e) => renameTaskApp(e, item.id)}
+                    // checkNameInput={checkNameInput}
+                    toggleImportant={() => toggleImportant(item.id)}
+                    // toggleInput={toggleInput}
                 />)
             }
         </ul>

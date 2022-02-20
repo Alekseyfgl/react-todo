@@ -20,13 +20,13 @@ class TasksProgress extends React.Component {
                     id: 1,
                     name: 'Task 1',
                     isActive: true,
-                    isImportant: true,
+                    isImportant: false,
                 },
                 {
                     id: 2,
                     name: 'Task 2',
                     isActive: true,
-                    isImportant: true,
+                    isImportant: false,
                 },
                 {
                     id: 3,
@@ -44,11 +44,10 @@ class TasksProgress extends React.Component {
             displayedList: 'all',
             panelForSearch: '',
 
-            toggleInput: false,
+            // toggleInput: false,
         }
         // this.maxId = 5;
     }
-
 
 
     componentDidMount() {
@@ -64,6 +63,21 @@ class TasksProgress extends React.Component {
         })
     }
 
+    toggleImportant = (id) => {
+        console.log(id)
+        this.setState(({tasks}) => {
+            const index = tasks.findIndex(elem => elem.id === id);
+            const oldObj = tasks[index];
+            const newItem = {...oldObj, isImportant: !oldObj.isImportant}
+            const newArr = [...tasks.slice(0, index), newItem, ...tasks.slice(index + 1)];
+
+            //а эта уже нет)
+            return {
+                tasks: newArr,
+            }
+
+        })
+    }
 
     searchTasks = (tasks, panelForSearch) => {
         // console.log('searchTasks', panelForSearch);
@@ -82,6 +96,8 @@ class TasksProgress extends React.Component {
 
 
     filterTasks = (tasks, displayedList) => {
+        console.log('tasks', tasks)
+        console.log('displayedList', displayedList)
 
         switch (displayedList) {
             case 'all':
@@ -99,32 +115,6 @@ class TasksProgress extends React.Component {
     }
 
 
-
-
-    //++++++++++ This is needs to be completed ++++++++++
-    // renameTaskApp = (e) => {
-    //     const btnEdit = e.currentTarget;
-    //
-    //     // this.setState({
-    //     //     toggleInput : !this.state.toggleInput,
-    //     // })
-    //
-    //     // const taskName = btnEdit.parentElement.parentElement.children[0].children[1];
-    //     // console.log(taskName)
-    //
-    //
-    //
-    //     // this.state.toggleInput ? <input/> : <p>{this.state.name}</p>
-    //     // taskName.disabled = false;
-    //     // taskName.focus();
-    //
-    //     // taskName.onblur = () => {
-    //     //     // taskName.disabled = true;
-    //     //     this.setState({
-    //     //         toggleInput : !this.state.toggleInput,
-    //     //     })
-    //     // }
-    // }
 
 
 
@@ -158,20 +148,7 @@ class TasksProgress extends React.Component {
         })));
     }
 
-    // checkNameInput = (id, inputVal) => {
-    //     // console.log(id, inputVal)
-    //     this.setState(({tasks}) => ({
-    //         tasks: tasks.map(user => {
-    //             if (user.id === id) {
-    //                 return {
-    //                     ...user,
-    //                     name: inputVal ? inputVal : 'no title',
-    //                 }
-    //             }
-    //             return user;
-    //         })
-    //     }))
-    // }
+
 
     //удаляем task
     delTask = (id) => {
@@ -278,11 +255,12 @@ class TasksProgress extends React.Component {
 
                 <TasksUncompletedAmount todoTasks={todoTasks}/>
 
-                <TasksList toggleInput={this.state.toggleInput}
-
-                           // renameTaskApp={this.renameTaskApp}
+                <TasksList
+                    // toggleInput={this.state.toggleInput}
+                           toggleImportant={this.toggleImportant}
+                    // renameTaskApp={this.renameTaskApp}
                            onRenameTask={this.onRenameTask}
-                           // checkNameInput={this.checkNameInput}
+                    // checkNameInput={this.checkNameInput}
 
                            closeTask={this.closeTask}
                            tasks={finalTasks}
