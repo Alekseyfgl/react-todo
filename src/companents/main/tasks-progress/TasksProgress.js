@@ -64,7 +64,7 @@ class TasksProgress extends React.Component {
     }
 
     toggleImportant = (id) => {
-        console.log(id)
+        // console.log(id)
         this.setState(({tasks}) => {
             const index = tasks.findIndex(elem => elem.id === id);
             const oldObj = tasks[index];
@@ -88,6 +88,8 @@ class TasksProgress extends React.Component {
         return tasks.filter(item => item.name.indexOf(panelForSearch) > -1);
     }
 
+
+
     onUpdateSearchApp = (panelForSearch) => {
         this.setState({
             panelForSearch: panelForSearch,
@@ -95,9 +97,10 @@ class TasksProgress extends React.Component {
     }
 
 
+
     filterTasks = (tasks, displayedList) => {
-        console.log('tasks', tasks)
-        console.log('displayedList', displayedList)
+        // console.log('tasks', tasks)
+        // console.log('displayedList', displayedList)
 
         switch (displayedList) {
             case 'all':
@@ -117,7 +120,6 @@ class TasksProgress extends React.Component {
 
 
 
-
     onRenameTask = (id, inputVal) => {
         // console.log(inputVal)
         // console.log(id)
@@ -128,7 +130,7 @@ class TasksProgress extends React.Component {
                     if (user.id === id) {
                         return {
                             ...user,
-                            name: inputVal ? inputVal : 'to title',
+                            name: inputVal.trim() ? inputVal : 'no title',
                         }
                     }
                     return user;
@@ -141,7 +143,7 @@ class TasksProgress extends React.Component {
             if (user.id === id) {
                 return {
                     ...user,
-                    name: inputVal ? inputVal : 'no title',
+                    name: inputVal.trim() ? inputVal : 'no title',
                 }
             }
             return user;

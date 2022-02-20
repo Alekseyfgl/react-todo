@@ -94,7 +94,6 @@ class Task extends React.Component {
                 onChange={this.onRenameInputChild}
                 value={this.state.name}
                 // defaultValue={name}
-                disabled={false}
 
                 ref={this.myRef}
 
