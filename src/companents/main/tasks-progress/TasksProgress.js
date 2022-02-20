@@ -80,12 +80,13 @@ class TasksProgress extends React.Component {
     }
 
     searchTasks = (tasks, panelForSearch) => {
-        // console.log('searchTasks', panelForSearch);
+        console.log('searchTasks', panelForSearch);
+
         if (panelForSearch.length === 0) {
             return tasks
         }
 
-        return tasks.filter(item => item.name.indexOf(panelForSearch) > -1);
+        return tasks.filter(item => item.name.toLowerCase().indexOf(panelForSearch) > -1);
     }
 
 
