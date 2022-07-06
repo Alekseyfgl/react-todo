@@ -80,7 +80,7 @@ class TasksProgress extends React.Component {
     }
 
     searchTasks = (tasks, panelForSearch) => {
-        console.log('searchTasks', panelForSearch);
+        // console.log('searchTasks', panelForSearch);
 
         if (panelForSearch.length === 0) {
             return tasks
